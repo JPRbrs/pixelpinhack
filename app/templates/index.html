@@ -3,7 +3,7 @@
 <head>
   <meta charset='utf-8'>
   <title>{{title}} - Secrets </title>
-  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="../../static/css/main.css">
 </head>
 
 <body>
@@ -26,22 +26,59 @@
   {{# page === 'pixelpin' }}
     {{>pixelpin}}
   {{/}}
+  {{# page === 'app' }}
+    {{>app}}
+  {{/}}
+  {{# page === 'apptwo' }}
+    {{>apptwo}}
+  {{/}}
     
   </script>
   <script id='pixelpin' type='text/ractive'>
     <div class="login">
         <h1>Confirm yout pattern</h1>
-        <div class="pixelpin"></div>
+        <div class="pixelpin">
+          <img on-click='click' src="../../static/img/pixel.png" style="width: auto; height: 250px;">
+          <div on-click='clicktwo'  style="border: 1px solid black; width: auto; height: 250px;"></div>
+        </div>
     </div>
   </script>
   <script id='login' type='text/ractive'>
     <div class="login">
-      <h1>Hello, {{user.nickname}}!</h1>
+      <h1>{{title}}</h1>
             <form>
                 <input type="text" name="u" placeholder="Username" required="required" />
                 <button type="submit" on-click='succes' class="btn btn-primary btn-block btn-large">Let me in.</button>
             </form>
         </div>
+  </script>
+  <script id='app' type='text/ractive'>
+    <div>
+       <div class="app-container">
+       <h1>{{titleapp}}</h1>
+         <div class='table'>
+            <ul>
+              {{#passwords:name}}
+                <li>{{name}}: {{pass}}</li>
+              {{/passwords}}
+            </ul>
+         </div>
+      </div>
+    </div>
+  </script>
+  <script id='apptwo' type='text/ractive'>
+    <div>
+       <div class="app-container">
+       <h1>{{titleapp}}</h1>
+         <div class='table'>
+            <ul>
+              {{#passwordsfake:name}}
+                <li>{{name}}: {{pass}}</li>
+              {{/passwordsfake}}
+            </ul>
+         </div>
+      </div>
+    </div>
   </script>
 
   <!--
@@ -70,7 +107,19 @@
       // Here, we're passing in some initial data
       data: { 
         title: "StoreYourPass",
-        page: 'login'
+        page: 'login',
+        counter: 0,
+        titleapp: "THIS ARE YOUR SECRETS",
+         passwords: {
+          'Facebook': { pass: 'jkhsHJSDIU6' },
+          'Instagram': { pass: '£%%OHBnsY^' },
+          'G+': { pass: 'uGystdbJ' }
+        },
+        passwordsfake: {
+          'Facebook': { pass: 'fake' },
+          'Instagram': { pass: 'fake' },
+          'G+': { pass: 'fake' }
+        }
         },
       
 
@@ -79,6 +128,26 @@
         
         ractive.set({page: "pixelpin"});
     });
+    ractive.on( 'click', function ( event ) {
+      console.log("one");
+        counter = ractive.get('counter');
+        counter += 1;
+        console.log(counter);
+        ractive.set({counter: counter});
+        if (counter == 4 ) {
+          ractive.set({page: "app"});
+        }
+    });
+    ractive.on( 'clicktwo', function ( event ) {
+      console.log("two");
+        countertwo = ractive.get('counter');
+        countertwo += 1;
+        ractive.set({counter: countertwo});
+        if (countertwo == 4 ) {
+          ractive.set({page: "apptwo"});
+        }
+    });
+
   </script>
 </body>
 
