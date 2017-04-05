@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 <!doctype html>
 <html lang='en-GB'>
 <head>
   <meta charset='utf-8'>
-  <title>Ractive test</title>
-  <link rel="stylesheet" href="../../static/css/main.css">
+  <title>{{title}} - Secrets </title>
+  <link rel="stylesheet" href="/static/css/main.css">
 </head>
 
 <body>
@@ -21,7 +20,7 @@
   -->
   <script id='template' type='text/ractive'>
     <div class="login">
-            <h1>{{title}}</h1>
+      <h1>Hello, {{user.nickname}}!</h1>
             <form>
                 <input type="text" name="u" placeholder="Username" required="required" />
                 <button type="submit" on-click='succes' class="btn btn-primary btn-block btn-large">Let me in.</button>
@@ -71,13 +70,4 @@
     });
   </script>
 </body>
-=======
-<html>
-  <head>
-    <title>{{title}} - Secrets </title>
-  </head>
-  <body>
-    <h1>Hello, {{user.nickname}}!</h1>
-  </body>
->>>>>>> 49bc39d36f96277238b3cad1beb14a323142fbb4
-</html>
+
