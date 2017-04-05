@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!doctype html>
 <html lang='en-GB'>
 <head>
@@ -20,6 +20,22 @@
        just about anything except 'text/javascript'
   -->
   <script id='template' type='text/ractive'>
+  {{# page === 'login' }}
+    {{>login}}
+  {{/}}
+
+  {{# page === 'pixelpin' }}
+    {{>pixelpin}}
+  {{/}}
+    
+  </script>
+  <script id='pixelpin' type='text/ractive'>
+    <div class="login">
+        <h1>Confirm yout pattern</h1>
+        <div class="pixelpin"></div>
+    </div>
+  </script>
+  <script id='login' type='text/ractive'>
     <div class="login">
             <h1>{{title}}</h1>
             <form>
@@ -27,12 +43,6 @@
                 <button type="submit" on-click='succes' class="btn btn-primary btn-block btn-large">Let me in.</button>
             </form>
         </div>
-  </script>
-  <script id='pixelpin' type='text/ractive'>
-    <div class="login">
-        <h1>Confirm yout pattern</h1>
-        <div class="pixelpin"></div>
-    </div>
   </script>
 
   <!--
@@ -60,24 +70,16 @@
 
       // Here, we're passing in some initial data
       data: { 
-        title: "StoreYourPass" 
+        title: "StoreYourPass",
+        page: 'login'
         },
       
 
     });
     ractive.on( 'succes', function ( event ) {
-        alert("dziala");
-        //ractive.set({template: "#pixelpin"});
+        
+        ractive.set({page: "pixelpin"});
     });
   </script>
 </body>
-=======
-<html>
-  <head>
-    <title>{{title}} - Secrets </title>
-  </head>
-  <body>
-    <h1>Hello, {{user.nickname}}!</h1>
-  </body>
->>>>>>> 49bc39d36f96277238b3cad1beb14a323142fbb4
-</html>
+
