@@ -3,13 +3,12 @@
   <head>
     <meta charset='utf-8'>
     <title>{{title}} - Secrets </title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}"
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"
 	  </head>
 
   <body>
-    <!--  <h1> Hello world</
-	  <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>-->
-    <h1>Ractive test</h1>
+
+    <h1>Welcome to Ractive test {{user.nickname}}</h1>
 
     <div id='container'></div>
 
@@ -19,22 +18,16 @@
     </script>
     {% endraw %}
 
+
     <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
-    {% raw %}
-    <script>
-      var ractive = new Ractive({
-      // The `el` option can be a node, an ID, or a CSS selector.
-      el: '#container',
-
-      // We could pass in a string, but for the sake of convenience
-      // we're passing the ID of the <script> tag above.
-	template: '#template',
-
-	// Here, we're passing in some initial data
-	data: { name: 'world' }
-	});
-      </script>
-      {% endraw %}
-      <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <!-- Code can be inline or in a separate file but import ractive min first always!
+	<script>
+	  var ractive = new Ractive({
+	  el: '#container',
+	  template: '#template',
+	  data: { name: 'world' }
+	  });
+	</script>-->
   </body>
 
