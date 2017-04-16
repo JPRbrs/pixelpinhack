@@ -3,14 +3,16 @@
   <head>
     <meta charset='utf-8'>
     <title>{{title}} - Secrets </title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"
-	  </head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/javi.css') }}"/>
+  </head>
 
   <body>
 
     <h1>Welcome to Ractive test {{user.nickname}}</h1>
 
-    <div id='container'></div>
+    <div id="container"></div>
+    <div id="button">Hover me!</div>
 
     {% raw %}
     <script id='template' type='text/ractive'>
@@ -19,15 +21,8 @@
     {% endraw %}
 
 
-    <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+    <script src="http://cdn.ractivejs.org/latest/ractive.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
-    <!-- Code can be inline or in a separate file but import ractive min first always!
-	<script>
-	  var ractive = new Ractive({
-	  el: '#container',
-	  template: '#template',
-	  data: { name: 'world' }
-	  });
-	</script>-->
   </body>
 
